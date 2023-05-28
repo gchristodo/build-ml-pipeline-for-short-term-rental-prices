@@ -2,6 +2,10 @@
 """
 This script download a URL to a local destination
 """
+import subprocess
+
+# Install wandb
+subprocess.check_call(["pip", "install", "wandb"])
 import argparse
 import logging
 import os
