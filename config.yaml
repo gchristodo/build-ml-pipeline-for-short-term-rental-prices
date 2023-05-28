@@ -1,5 +1,6 @@
 main:
   components_repository: "https://github.com/gchristodo/build-ml-pipeline-for-short-term-rental-prices#components"
+  # components_repository: null
   # All the intermediate files will be copied to this directory at the end of the run.
   # Set this to null if you are running in prod
   project_name: nyc_airbnb
