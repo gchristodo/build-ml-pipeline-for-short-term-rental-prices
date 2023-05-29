@@ -68,4 +68,8 @@ def test_row_count(data: pd.DataFrame):
 
 
 def test_price_range(data: pd.DataFrame, min_price: float, max_price: float):
-    assert data["price"].between(min_price, max_price)
+    """
+    Checks that the price_range of the price column
+    is between a min and a max value
+    """
+    assert data["price"].between(min_price, max_price).all()
