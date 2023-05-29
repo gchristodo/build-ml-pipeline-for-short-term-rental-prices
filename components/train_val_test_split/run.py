@@ -44,11 +44,10 @@ def go(args):
     buffer = io.BytesIO()
     for df, k in zip([trainval, test], ['trainval', 'test']):
         logger.info(f"Uploading {k}_data.csv dataset")
-        # Download the file streaming and write to the buffer
-        with requests.get(df, stream=True) as r:
-            for chunk in r.iter_content(chunk_size=8192):
-                buffer.write(chunk)
-
+        # Write df to the buffer
+        csv_string = df.to_csv(index=False).encode()
+        # Write the CSV string to the buffer
+        buffer.write(csv_string)
         # Reset the buffer position to the beginning
         buffer.seek(0)
 
