@@ -3,6 +3,7 @@ main:
   # components_repository: null
   # All the intermediate files will be copied to this directory at the end of the run.
   # Set this to null if you are running in prod
+  src_repository: "https://github.com/gchristodo/build-ml-pipeline-for-short-term-rental-prices#src"
   project_name: nyc_airbnb
   experiment_name: development
   steps: all
