@@ -105,9 +105,9 @@ def go(config: DictConfig):
 
             # NOTE: use the rf_config we just created as the rf_config parameter for the train_random_forest
             # step
-
             _ = mlflow.run(
-                os.path.join(root_path, "random_forest"),
+                # os.path.join(root_path, "random_forest"),
+                f"{config['main']['src_repository']}/train_random_forest",
                 "main",
                 parameters={
                     "trainval_artifact": "trainval_data.csv:latest",
