@@ -58,6 +58,7 @@ def go(config: DictConfig):
                 f"{config['main']['src_repository']}/basic_cleaning"
                 # os.path.join(root_path, "src", "basic_cleaning"),
                 "main",
+                version='main',
                 parameters={
                     "input_artifact": "sample.csv:latest",
                     "output_artifact": "clean_sample.csv",
