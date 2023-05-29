@@ -2,6 +2,10 @@
 """
 This script splits the provided dataframe in test and remainder
 """
+import subprocess
+
+# Install wandb
+subprocess.check_call(["pip", "install", "wandb"])
 import argparse
 import logging
 import pandas as pd
