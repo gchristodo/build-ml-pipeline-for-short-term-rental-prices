@@ -109,6 +109,7 @@ def go(config: DictConfig):
                 # os.path.join(root_path, "random_forest"),
                 f"{config['main']['src_repository']}/train_random_forest",
                 "main",
+                version='main',
                 parameters={
                     "trainval_artifact": "trainval_data.csv:latest",
                     "val_size": config["modeling"]["val_size"],
