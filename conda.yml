@@ -10,3 +10,4 @@ dependencies:
   - pyarrow=8.0.0
   - pip:
       - wandb==0.15.3
+      - fastparquet==2023.4.0
