@@ -22,7 +22,7 @@ def go(args):
     logger.info("Downloading artifact")
     artifact_local_path = run.use_artifact(args.input_artifact).file()
 
-    df = pd.read_parquet(artifact_local_path)
+    df = pd.read_csv(artifact_local_path)
     min_price = args.min_price
     max_price = args.max_price
     idx = df['price'].between(min_price, max_price)
