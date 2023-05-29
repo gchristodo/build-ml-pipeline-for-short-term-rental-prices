@@ -7,3 +7,4 @@ dependencies:
   - pandas=1.2.3
   - pip:
       - wandb==0.15.3
+      - git+https://github.com/gchristodo/build-ml-pipeline-for-short-term-rental-prices#egg=wandb-utils&subdirectory=src
