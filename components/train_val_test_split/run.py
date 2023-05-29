@@ -13,6 +13,8 @@ import wandb
 import tempfile
 from sklearn.model_selection import train_test_split
 from wandb_utils.log_artifact import log_artifact
+import io
+import requests
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
@@ -39,19 +41,32 @@ def go(args):
     )
 
     # Save to output files
+    buffer = io.BytesIO()
     for df, k in zip([trainval, test], ['trainval', 'test']):
         logger.info(f"Uploading {k}_data.csv dataset")
-        with tempfile.NamedTemporaryFile("w") as fp:
+        # Download the file streaming and write to the buffer
+        with requests.get(df, stream=True) as r:
+            for chunk in r.iter_content(chunk_size=8192):
+                buffer.write(chunk)
 
-            df.to_csv(fp.name, index=False)
+        # Reset the buffer position to the beginning
+        buffer.seek(0)
 
-            log_artifact(
-                f"{k}_data.csv",
-                f"{k}_data",
-                f"{k} split of dataset",
-                fp.name,
-                run,
-            )
+        # Create a temporary file and write the buffer contents to it
+        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            temp_file.write(buffer.getvalue())
+
+        temp_file_path = temp_file.name
+
+        df.to_csv(temp_file_path, index=False)
+
+        log_artifact(
+            f"{k}_data.csv",
+            f"{k}_data",
+            f"{k} split of dataset",
+            temp_file_path,
+            run,
+        )
 
 
 if __name__ == "__main__":
