@@ -6,6 +6,10 @@ import argparse
 import logging
 import wandb
 import mlflow
+import subprocess
+
+# Install wandb
+subprocess.check_call(["pip", "install", "wandb"])
 import pandas as pd
 from sklearn.metrics import mean_absolute_error
 
