@@ -12,6 +12,7 @@ import subprocess
 subprocess.check_call(["pip", "install", "wandb"])
 import pandas as pd
 from sklearn.metrics import mean_absolute_error
+import wandb
 
 from wandb_utils.log_artifact import log_artifact
 
