@@ -9,9 +9,7 @@ subprocess.check_call(["pip", "install", "wandb"])
 import argparse
 import logging
 import os
-print("I AM HERE")
 import wandb
-print("I AM THERE")
 from wandb_utils.log_artifact import log_artifact
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
