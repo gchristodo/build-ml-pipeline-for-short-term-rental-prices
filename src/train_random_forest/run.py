@@ -136,14 +136,13 @@ def go(args):
     # Now log the variable "mae" under the key "mae".
     run.summary["mae"] = mae
     ######################################
-    print("###############Adding Image##################")
+
     # Upload to W&B the feture importance visualization
     run.log(
         {
           "feature_importance": wandb.Image(fig_feat_imp),
         }
     )
-    print("############### IMAGE ADDED ##################")
 
 def plot_feature_importance(pipe, feat_names):
     # We collect the feature importance for all non-nlp features first
